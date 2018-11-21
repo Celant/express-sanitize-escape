@@ -84,6 +84,7 @@ function encoderTest(encoder, sanitize) {
             .end(function (err, res) {
                 if (err) return done(err);
                 try {
+                    debugger;
                     res.body.should.have.property('hasHtml', hasHtmlEncoded);
                     done();
                 } catch (err) {
@@ -131,8 +132,9 @@ function encoderTest(encoder, sanitize) {
             .end(function (err, res) {
                 if (err) return done(err);
                 try {
+                    debugger;
                     res.body.should.have.property('first', hasHtmlEncoded);
-                    res.body.should.have.deep.property('secondObj.third', entitiesEncoded);
+                    res.body.should.have.nested.property('secondObj.third', entitiesEncoded);
                     res.body.fourthArray[0].should.equal(hasHtmlEncoded);
                     done();
                 } catch (err) {
